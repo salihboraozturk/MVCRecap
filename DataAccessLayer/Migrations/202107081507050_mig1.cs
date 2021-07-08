@@ -11,7 +11,7 @@
             CreateIndex("dbo.Contents", "WriterID");
             AddForeignKey("dbo.Contents", "WriterID", "dbo.Writers", "WriterID");
         }
-        
+         
         public override void Down()
         {
             DropForeignKey("dbo.Contents", "WriterID", "dbo.Writers");
