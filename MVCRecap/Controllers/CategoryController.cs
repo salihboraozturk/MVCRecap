@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BusinessLayer.Concrete;
+using EntityLayer.Concrete;
 
 namespace MVCRecap.Controllers
 {
@@ -20,6 +21,18 @@ namespace MVCRecap.Controllers
         {
             var categoryValues = cm.GetAllBL();
             return View(categoryValues);
+        }
+        [HttpGet]
+        public ActionResult AddCategory()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddCategory(Category category)
+        {
+            cm.CategoryAddBL(category);
+            return RedirectToAction("GetCategoryList");
         }
     }
 }

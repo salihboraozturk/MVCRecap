@@ -14,11 +14,13 @@
     </tr>
     @foreach (var item in Model)
     {
-<tr>
-    <td>@item.CategoryID</td>
-    <td>@item.CategoryName</td>
-    <td>@item.CategoryDesription</td>
-    <td>@item.CategoryStatus</td>
-</tr>
+        <tr>
+            <td>@item.CategoryID</td>
+            <td>@item.CategoryName</td>
+            <td>@item.CategoryDesription</td>
+            <td>@item.CategoryStatus</td>
+        </tr>
     }
 </table>
+<br/>
+<a href="/Category/AddCategory" class="btn btn-info">Yeni Kategori</a>
