@@ -5,17 +5,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
 
 namespace BusinessLayer.Concrete
 {
-    public class CategoryManager
+    public class CategoryManager:ICategoryService
     {
-        private GenericRepository<Category> repo = new GenericRepository<Category>();
+        private readonly ICategoryDal _categoryDal;
 
-        public List<Category> GetAllBL()
+        public CategoryManager(ICategoryDal categoryDal)
         {
-            return repo.List();
+            _categoryDal = categoryDal;
         }
+
         public void CategoryAddBL(Category category)
         {
             if (category.CategoryName == "")
@@ -24,8 +27,13 @@ namespace BusinessLayer.Concrete
             }
             else
             {
-                repo.Insert(category);
+                _categoryDal.Insert(category);
             }
+        }
+
+        public List<Category> GetList()
+        {
+            return _categoryDal.List();
         }
     }
 }

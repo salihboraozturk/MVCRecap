@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 
 namespace MVCRecap.Controllers
@@ -11,7 +12,7 @@ namespace MVCRecap.Controllers
     public class CategoryController : Controller
     {
         // GET: Category
-        private CategoryManager cm = new CategoryManager();
+        private CategoryManager cm = new CategoryManager(new EfCategoryDal());
         public ActionResult Index()
         {
             return View();
@@ -19,13 +20,12 @@ namespace MVCRecap.Controllers
 
         public ActionResult GetCategoryList()
         {
-            var categoryValues = cm.GetAllBL();
+            var categoryValues = cm.GetList();
             return View(categoryValues);
         }
         [HttpGet]
         public ActionResult AddCategory()
         {
-
             return View();
         }
         [HttpPost]

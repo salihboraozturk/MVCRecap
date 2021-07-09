@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer
+namespace DataAccessLayer.EntityFramework
 {
-    public class Class1
+    public class EfContentDal
     {
     }
 }
