@@ -39,6 +39,11 @@ namespace DataAccessLayer.Concrete.Repositories
             return _object.Where(filter).ToList();
         }
 
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return _object.Where(filter).SingleOrDefault();
+        }
+
         public void Update(T t)
         {
             c.SaveChanges();
