@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 
 namespace MVCRecap.Controllers
 {
@@ -31,8 +33,22 @@ namespace MVCRecap.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category category)
         {
-            cm.CategoryAddBL(category);
-            return RedirectToAction("GetCategoryList");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(category);
+            if (results.IsValid)
+            {
+                cm.CategoryAddBL(category);
+                return RedirectToAction("GetCategoryList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName,item.ErrorMessage);
+                }
+            }
+         
+            return View();
         }
     }
 }

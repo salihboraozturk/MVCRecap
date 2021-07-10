@@ -21,14 +21,7 @@ namespace BusinessLayer.Concrete
 
         public void CategoryAddBL(Category category)
         {
-            if (category.CategoryName == "")
-            {
-
-            }
-            else
-            {
-                _categoryDal.Insert(category);
-            }
+            _categoryDal.Insert(category);
         }
 
         public List<Category> GetList()
