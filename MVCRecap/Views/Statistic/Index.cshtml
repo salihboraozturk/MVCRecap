@@ -4,12 +4,117 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>@ViewData["CategoryCount"]</h2>
-<h2>@ViewData["HeadingSoftwareCount"]</h2>
-<h2>@ViewData["WriterInA"]</h2>
-<h2>@ViewData["False"]</h2>
-<h2>@ViewData["True"]</h2>
-<h2>@ViewData["A"]</h2>
+<!DOCTYPE html>
+<html>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+             
+                    <!-- Small Box (Stat card) -->
+                    <h5 class="mb-2">İstatistikler</h5>
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>@ViewData["CategoryCount"]</h3>
+
+                                    <p>Toplam Kategori Sayısı</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>@ViewData["HeadingSoftwareCount"]</h3>
+
+                                    <p>Yazılım Kategorisine Ait Başlık Sayısı</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>@ViewData["WriterInA"]</h3>
+
+                                    <p>Adında "A" Harfi Geçen Yazar Sayısı</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>@ViewData["A"]</h3>
+
+                                    <p>En fazla başlığa sahip kategori adı</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>@ViewData["TrueMinusFalse"]</h3>
+
+                                    <p>Aktif-Deaktif Kategori Farkı</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                  
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+
+<!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+
+</html>
 
 
 

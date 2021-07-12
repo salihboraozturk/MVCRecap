@@ -20,9 +20,9 @@ namespace MVCRecap.Controllers
             ViewData["CategoryCount"] = cm.GetList().Count();
             ViewData["HeadingSoftwareCount"] = hd.GetAllByCategoryID(14).Count();
             ViewData["WriterInA"] = wr.GetAllWriterInA().Count();
-            ViewData["False"] = cm.GetAllCategoryStatusFalse().Count();
-            ViewData["True"] = cm.GetAllCategoryStatusTrue().Count();
-            ViewData["A"]=hd.GetTopBusinessCategories().CategoryID;
+            ViewData["TrueMinusFalse"] = cm.GetAllCategoryStatusTrue().Count()- cm.GetAllCategoryStatusFalse().Count();
+            ViewData["A"] = cm.GetByID(hd.GetTopBusinessCategories().CategoryID).CategoryName;
+                ;
             return View();
         }
 
