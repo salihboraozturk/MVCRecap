@@ -43,5 +43,15 @@ namespace BusinessLayer.Concrete
         {
            _categoryDal.Update(category);
         }
+
+        public List<Category> GetAllCategoryStatusFalse()
+        {
+            return _categoryDal.List(c=>c.CategoryStatus==false);
+        }
+
+        public List<Category> GetAllCategoryStatusTrue()
+        {
+            return _categoryDal.List(c => c.CategoryStatus == true);
+        }
     }
 }

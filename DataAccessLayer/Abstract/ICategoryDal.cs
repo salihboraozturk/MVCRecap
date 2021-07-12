@@ -9,5 +9,7 @@ namespace DataAccessLayer.Abstract
 {
     public interface ICategoryDal:IRepository<Category>
     {
+        List<Category> GetAllCategoryStatusTrue();
+        List<Category> GetAllCategoryStatusFalse();
     }
 }

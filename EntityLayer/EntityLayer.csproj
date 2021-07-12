@@ -57,12 +57,14 @@
     <Compile Include="Concrete\Content.cs" />
     <Compile Include="Concrete\Heading.cs" />
     <Compile Include="Concrete\Writer.cs" />
+    <Compile Include="DTO\MostHeadingDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
