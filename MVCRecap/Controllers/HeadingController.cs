@@ -48,5 +48,35 @@ namespace MVCRecap.Controllers
             headingManager.HeadingAddBL(heading);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult EditHeading(int id)
+        {
+            List<SelectListItem> valueCategory = (from x in categoryManager.GetList()
+                select new SelectListItem
+                {
+                    Text = x.CategoryName,
+                    Value = x.CategoryID.ToString()
+                }).ToList(); 
+            ViewBag.vlc = valueCategory;
+            var headingValue = headingManager.GetByID(id);
+            return View(headingValue);
+        }
+        [HttpPost]
+        public ActionResult EditHeading(Heading heading)
+        {
+            
+            headingManager.HeadingUpdate(heading);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteHeading(int headingID)
+        {
+
+            var deletedValue = headingManager.GetByID(headingID);
+            headingManager.HeadingUpdate(deletedValue);
+            return RedirectToAction("Index");
+        }
+
     }
 }
