@@ -13,8 +13,8 @@ namespace MVCRecap.Controllers
     {
         private HeadingManager headingManager = new HeadingManager(new EfHeadingDal());
         private CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-
         private WriterManager writerManager = new WriterManager(new EfWriterDal());
+       
         // GET: Heading
         public ActionResult Index()
         {
@@ -70,10 +70,11 @@ namespace MVCRecap.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult DeleteHeading(int headingID)
+        public ActionResult DeleteHeading(int? headingID)
         {
 
-            var deletedValue = headingManager.GetByID(headingID);
+            var deletedValue = headingManager.GetByID((int)headingID);
+            deletedValue.HeadingStatus = false;
             headingManager.HeadingUpdate(deletedValue);
             return RedirectToAction("Index");
         }
