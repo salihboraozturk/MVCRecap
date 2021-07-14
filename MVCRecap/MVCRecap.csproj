@@ -137,8 +137,11 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HeadingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Controllers\WriterController.cs" />
     <Compile Include="Global.asax.cs">
@@ -166,6 +169,10 @@
     <Content Include="AdminLTE-3.0.4\build\npm\DocsPublish.js" />
     <Content Include="AdminLTE-3.0.4\build\npm\Plugins.js" />
     <Content Include="AdminLTE-3.0.4\build\npm\Publish.js" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error-404-10\css\style.css" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error-404-10\img\bg.jpg" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error-404-10\index.html" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error-404-10\readme.txt" />
     <Content Include="AdminLTE-3.0.4\dist\css\adminlte.css" />
     <Content Include="AdminLTE-3.0.4\dist\css\adminlte.min.css" />
     <Content Include="AdminLTE-3.0.4\dist\css\alt\adminlte.components.css" />
@@ -304,6 +311,18 @@
     <Content Include="AdminLTE-3.0.4\docs\_layouts\home.html" />
     <Content Include="AdminLTE-3.0.4\docs\_layouts\page.html" />
     <Content Include="AdminLTE-3.0.4\docs\_layouts\post.html" />
+    <Content Include="AdminLTE-3.0.4\Images\11839ae3c2714350be4936efe62d6331-3-24-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\16eaa5a9efb94312b851e41c849b704e-3-24-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\1a85afe0bd7b450b89ac69259736cef2-3-30-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\2ac91b2a60d14a92ad1f0fa04eba693c-3-25-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\2e3987c100ba4de8ad7d77e80387c878-3-24-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\3361183afd4a41c690006d4b42ee3cad-3-24-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\37a39f3d6be5461798abfb272ad6cead-3-24-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\7f15502cc4d34d6682227a943f2c7668-3-24-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\852161a35d4643edb6a98856ce1f4e28-4-9-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\c4576e44399b4b409cc78a2edc89c669-3-24-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\cdeb34a3b3db4281933e17487adaf319-3-30-2021.jpg" />
+    <Content Include="AdminLTE-3.0.4\Images\dd0542cfdf4142a5afadd3f436c77945-4-9-2021.jpg" />
     <Content Include="AdminLTE-3.0.4\index.html" />
     <Content Include="AdminLTE-3.0.4\index2.html" />
     <Content Include="AdminLTE-3.0.4\index3.html" />
@@ -2292,6 +2311,14 @@
     <Content Include="Views\About\AboutPartial.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\GetContactDetails.cshtml" />
+    <Content Include="Views\Contact\MessageListMenu.cshtml" />
+    <Content Include="Views\Message\Inbox.cshtml" />
+    <Content Include="Views\Message\Sendbox.cshtml" />
+    <Content Include="Views\Message\NewMessage.cshtml" />
+    <Content Include="Views\Message\GetInboxMessageDetails.cshtml" />
+    <Content Include="Views\Message\GetSendboxMessageDetails.cshtml" />
+    <Content Include="Views\ErrorPage\Page404.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
