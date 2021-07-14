@@ -34,6 +34,11 @@ namespace BusinessLayer.Concrete
             return _headingDal.List();
         }
 
+        public List<Heading> GetListByWriter(int writerID)
+        {
+            return _headingDal.List(x=>x.WriterID==writerID);
+        }
+
         public MostHeadingDTO GetTopBusinessCategories()
         {
             return _headingDal.GetTopBusinessCategories();

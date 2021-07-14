@@ -14,7 +14,6 @@ namespace MVCRecap.Controllers
     public class AdminCategoryController : Controller
     {
         private CategoryManager cm = new CategoryManager(new EfCategoryDal());
-        [Authorize]
         public ActionResult Index()
         {
             var categoryValues = cm.GetList();
@@ -32,6 +31,7 @@ namespace MVCRecap.Controllers
             ValidationResult results = categoryValidator.Validate(category);
             if (results.IsValid)
             {
+
             cm.CategoryAddBL(category);
             return RedirectToAction("Index");
             }
