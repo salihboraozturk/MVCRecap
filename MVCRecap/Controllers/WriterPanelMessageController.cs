@@ -19,12 +19,14 @@ namespace MVCRecap.Controllers
         // GET: WriterPanelMessage
         public ActionResult Inbox()
         {
-            var messageList = messageManager.GetListInbox();
+            var mail = (string) Session["WriterMail"];
+            var messageList = messageManager.GetListInbox(mail);
             return View(messageList);
         }
         public ActionResult Sendbox()
         {
-            var messageList = messageManager.GetListSendbox();
+            var mail = (string)Session["WriterMail"];
+            var messageList = messageManager.GetListSendbox(mail);
             return View(messageList);
         }
         public PartialViewResult MessageListMenu()
@@ -53,7 +55,7 @@ namespace MVCRecap.Controllers
             ValidationResult result = messageValidator.Validate(message);
             if (result.IsValid)
             {
-                message.SenderMail = "irem@gmail.com";
+                message.SenderMail = (string)Session["WriterMail"];
                 message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 messageManager.MessageAddBL(message);
                 return RedirectToAction("Sendbox");

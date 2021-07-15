@@ -17,6 +17,7 @@
                         <!-- timeline time label -->
                         @foreach (var item in Model)
                         {
+                            <br/>
                             <div class="time-label">
                                 <span class="bg-success">@(((DateTime)item.ContentDate).ToString("dd-MMM-yyy"))</span>
                             </div>

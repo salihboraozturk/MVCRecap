@@ -4,24 +4,51 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using PagedList;
 
 namespace MVCRecap.Controllers
 {
     public class WriterPanelController : Controller
     {
+        private WriterValidator validationRules = new WriterValidator();
+        private WriterManager writerManager = new WriterManager(new EfWriterDal());
         private HeadingManager headingManager = new HeadingManager(new EfHeadingDal());
          private CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
          Context c = new Context();
         // GET: WriterPanel
+        [HttpGet]
         public ActionResult WriterProfile()
         {
-            return View();
+            string p = (string)Session["WriterMail"];
+            var writerID = c.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
+            var writerValue = writerManager.GetByID(writerID);
+            return View(writerValue);
         }
+        [HttpPost]
+        public ActionResult WriterProfile(Writer writer)
+        {
+            ValidationResult results = validationRules.Validate(writer);
+            if (results.IsValid)
+            {
+                writerManager.WriterUpdate(writer);
+                return RedirectToAction("WriterProfile");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
 
+            return View();
+
+        }
         public ActionResult MyHeading()
         {
            

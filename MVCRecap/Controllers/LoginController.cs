@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using BusinessLayer.Concrete;
 using DataAccessLayer;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 
 namespace MVCRecap.Controllers
@@ -12,6 +14,7 @@ namespace MVCRecap.Controllers
     [AllowAnonymous]
     public class LoginController : Controller
     {
+        private WriterLoginManager writerLoginManager = new WriterLoginManager(new EfWriterDal());
         // GET: Login
         [HttpGet]
         public ActionResult Index()
@@ -46,14 +49,12 @@ namespace MVCRecap.Controllers
         [HttpPost]
         public ActionResult WriterLogin(Writer writer)
         {
-            Context c = new Context();
-            var adminUserInfo = c.Writers.FirstOrDefault(x =>
-                x.WriterMail == writer.WriterMail && x.WriterPassword == writer.WriterPassword);
-            if (adminUserInfo != null)
+            var writerUserInfo = writerLoginManager.GetWriter(writer.WriterMail, writer.WriterPassword);
+            if (writerUserInfo != null)
             {
-                FormsAuthentication.SetAuthCookie(adminUserInfo.WriterMail, false);
-                Session["WriterMail"] = adminUserInfo.WriterMail;
-                return RedirectToAction("MyContent", "WriterPanelContent");
+                FormsAuthentication.SetAuthCookie(writerUserInfo.WriterMail, false);
+                Session["WriterMail"] = writerUserInfo.WriterMail;
+                return RedirectToAction("AllHeading", "WriterPanel");
             }
             else
             {

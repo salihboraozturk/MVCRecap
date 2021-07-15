@@ -19,12 +19,14 @@ namespace MVCRecap.Controllers
         // GET: Message
         public ActionResult Inbox()
         {
-            var messageList = messageManager.GetListInbox();
+            var mail = (string)Session["WriterMail"];
+            var messageList = messageManager.GetListInbox(mail);
             return View(messageList);
         }
         public ActionResult Sendbox()
         {
-            var messageList = messageManager.GetListSendbox();
+            var mail = (string)Session["WriterMail"];
+            var messageList = messageManager.GetListSendbox(mail);
             return View(messageList);
         }
         public ActionResult GetInboxMessageDetails(int id)

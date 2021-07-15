@@ -18,13 +18,13 @@ namespace BusinessLayer.Concrete
             _messageDal = messageDal;
         }
 
-        public List<Message> GetListInbox()
+        public List<Message> GetListInbox(String receiverMail)
         {
-            return _messageDal.List(x=>x.ReceiverMail=="irem@gmail.com");
+            return _messageDal.List(x=>x.ReceiverMail== receiverMail);
         }
-        public List<Message> GetListSendbox()
+        public List<Message> GetListSendbox(String senderMail)
         {
-            return _messageDal.List(x => x.SenderMail == "irem@gmail.com");
+            return _messageDal.List(x => x.SenderMail == senderMail);
         }
 
         public void MessageAddBL(Message message)
