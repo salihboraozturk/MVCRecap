@@ -45,7 +45,14 @@ namespace BusinessLayer.Concrete
 
         public List<Content> GetListByHeadingID(int headingID)
         {
-            return _contentDal.List(c => c.HeadingID == headingID);
+            if (headingID == 0)
+            {
+                return GetList();
+            }
+            else
+            {
+                return _contentDal.List(c => c.HeadingID == headingID);
+            }
         }
 
         public List<Content> GetListByWriterID(int writerID)

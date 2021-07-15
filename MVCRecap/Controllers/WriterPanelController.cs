@@ -7,6 +7,7 @@ using BusinessLayer.Concrete;
 using DataAccessLayer;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using PagedList;
 
 namespace MVCRecap.Controllers
 {
@@ -27,6 +28,11 @@ namespace MVCRecap.Controllers
             string p = (string) Session["WriterMail"];
             var writerID = c.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
             var values = headingManager.GetListByWriter(writerID);
+            return View(values);
+        }
+        public ActionResult AllHeading(int p=1)
+        {
+            var values = headingManager.GetList().ToPagedList(p,3);
             return View(values);
         }
         [HttpGet]
@@ -74,11 +80,10 @@ namespace MVCRecap.Controllers
             headingManager.HeadingUpdate(heading);
             return RedirectToAction("MyHeading");
         }
-        public ActionResult DeleteHeading(int headingID)
+        public ActionResult DeleteHeading(int id)
         {
 
-            var deletedValue = headingManager.GetByID(headingID);
-            deletedValue.HeadingStatus = false;
+            var deletedValue = headingManager.GetByID(id);
             headingManager.HeadingDelete(deletedValue);
             return RedirectToAction("MyHeading");
         }

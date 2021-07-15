@@ -69,13 +69,11 @@ namespace MVCRecap.Controllers
             headingManager.HeadingUpdate(heading);
             return RedirectToAction("Index");
         }
-
-        public ActionResult DeleteHeading(int? headingID)
+        public ActionResult DeleteHeading(int id)
         {
 
-            var deletedValue = headingManager.GetByID((int)headingID);
-            deletedValue.HeadingStatus = false;
-            headingManager.HeadingUpdate(deletedValue);
+            var deletedValue = headingManager.GetByID(id);
+            headingManager.HeadingDelete(deletedValue);
             return RedirectToAction("Index");
         }
 
