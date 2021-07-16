@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public List<Content> GetList()
         {
-            return _contentDal.List();
+                return _contentDal.List();
         }
 
         public void ContentAddBL(Content content)
@@ -58,6 +58,19 @@ namespace BusinessLayer.Concrete
         public List<Content> GetListByWriterID(int writerID)
         {
             return _contentDal.List(c => c.WriterID == writerID);
+        }
+
+        public List<Content> GetListFilter(string p)
+        {
+            if (p==null)
+            {
+              return GetList();
+            }
+            else
+            {
+                return _contentDal.List(x => x.ContentValue.Contains(p));
+            }
+           
         }
     }
 }
