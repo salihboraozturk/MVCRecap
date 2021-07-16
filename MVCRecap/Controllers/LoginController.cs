@@ -69,5 +69,11 @@ namespace MVCRecap.Controllers
             Session.Abandon();
             return RedirectToAction("Headings","Default");
         }
+        public ActionResult LogOutAdmin()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index");
+        }
     }
 }
